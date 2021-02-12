@@ -6,9 +6,5 @@ def new_uuid():
     return str(uuid)
 
 
-def main():
-    return new_uuid()
-
-
 if __name__ == '__main__':
-    main()
+    new_uuid()
