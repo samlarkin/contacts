@@ -1,8 +1,4 @@
-"""Tests for the contacts module.
-
-Author: Sam Larkin
-Date: 2021-02-12
-"""
+"""Tests for the contacts module."""
 
 import json
 import os
@@ -112,8 +108,18 @@ class TestContacts(TestCase):
         pass
 
     def test_export(self):
-        """Test export method."""
-        pass
+        """Test export method.
+
+        Mock up stdout with a StringIO object and test that the export
+        method correctly dumps the contacts data to the mocked output
+        as json.
+        """
+
+        with patch('sys.stdout', new=StringIO()) as mock_stdout:
+            self.data.export(range(len(self.data.contacts)))
+            test_export = mock_stdout.getvalue()
+            correct_export = json.dumps(self.data.contacts)
+            self.assertEqual(test_export, correct_export)
 
     def test_edit(self):
         """Test edit method."""
