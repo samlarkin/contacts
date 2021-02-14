@@ -93,7 +93,6 @@ class ContactData:
             pretty_matches.append(pretty_dict)
         sys.stdout.write(tabulate(pretty_matches, headers='keys'))
         sys.stdout.write('\n')
-        sys.stdout.close()
         return
 
     def export(self, indices=None, args=None):

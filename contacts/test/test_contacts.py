@@ -2,17 +2,16 @@
 
 import json
 import os
+import unittest
 
-from unittest import TestCase
 from unittest.mock import patch
-from unittest import main
 from shutil import copyfile
 from io import StringIO
 
 import contacts
 
 
-class TestContacts(TestCase):
+class TestContacts(unittest.TestCase):
     """Test contact management utilities"""
 
     def setUp(self):
@@ -23,8 +22,8 @@ class TestContacts(TestCase):
         not become corrupted in the event of unexpected behaviour).
         """
 
-        copyfile('example_contacts.json', 'test_contacts.json')
-        self.json_file = 'test_contacts.json'
+        copyfile('test/example_contacts.json', 'test/test_contacts.json')
+        self.json_file = 'test/test_contacts.json'
         self.data = contacts.ContactData(self.json_file)
 
     def tearDown(self):
@@ -34,7 +33,7 @@ class TestContacts(TestCase):
         edited by the preceding test.
         """
 
-        os.remove('test_contacts.json')
+        os.remove('test/test_contacts.json')
 
     def test_read_json(self):
         """Test read_json method (used in ContactData constructor)."""
@@ -60,11 +59,11 @@ class TestContacts(TestCase):
         """
         with patch('sys.stderr', new=StringIO()) as mock_stderr:
             self.data.overwrite()
-            correct_stderr = 'overwriting ... test_contacts.json'
+            correct_stderr = 'overwriting ... test/test_contacts.json'
             self.assertEqual(mock_stderr.getvalue(), correct_stderr)
         with open(self.json_file, 'r') as overwritten_f:
             test_data = json.load(overwritten_f)
-        with open('example_contacts.json', 'r') as correct_f:
+        with open('test/example_contacts.json', 'r') as correct_f:
             example_data = json.load(correct_f)
         correct_result = sorted(example_data, key=lambda k: k['name'])
         self.assertEqual(test_data, correct_result)
@@ -104,8 +103,17 @@ class TestContacts(TestCase):
         self.assertEqual(test_matches, correct_result)
 
     def test_show(self):
-        """Test show method."""
-        pass
+        """Test show method.
+
+        Mock up stdout with StringIO object and test that the output of
+        the show method is as expected.
+        """
+        with patch('sys.stdout', new=StringIO()) as mock_stdout:
+            self.data.show(range(len(self.data.contacts)))
+            test_show = mock_stdout.getvalue()
+            with open('test/expected_show_result.txt', 'r') as f:
+                correct_result = f.read()
+            self.assertEqual(test_show, correct_result)
 
     def test_export(self):
         """Test export method.
@@ -150,4 +158,4 @@ class TestContacts(TestCase):
 
 
 if __name__ == '__main__':
-    main()
+    unittest.main()

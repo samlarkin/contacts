@@ -1,0 +1,83 @@
+name                       email                                        phone
+-------------------------  -------------------------------------  -----------
+[95mAbradolf Lincler[0m           [96mabradolf.lincler@plumbus.com[0m           [92m07007937005[0m
+[95mAlan Rails[0m                 [96malan.rails@plumbus.com[0m                 [92m07604760307[0m
+[95mAnnie[0m                      [96mannie@plumbus.com[0m                      [92m07043015449[0m
+[95mArthricia[0m                  [96marthricia@plumbus.com[0m                  [92m07182379355[0m
+[95mBalthrema[0m                  [96mbalthrema@plumbus.com[0m                  [92m07780235579[0m
+[95mBeta VII[0m                   [96mbeta.vii@plumbus.com[0m                   [92m07556874305[0m
+[95mBeth Smith[0m                 [96mbeth.smith@plumbus.com[0m                 [92m07466844212[0m
+[95mBlim Blam the Klorblok[0m     [96mblim.blam.the.klorblok@plumbus.com[0m     [92m07634337809[0m
+[95mBrad[0m                       [96mbrad@plumbus.com[0m                       [92m07512903469[0m
+[95mBruce[0m                      [96mbruce@plumbus.com[0m                      [92m07180848570[0m
+[95mCampaign Manager Morty[0m     [96mcampaign.manager.morty@plumbus.com[0m     [92m07192041924[0m
+[95mConcerto[0m                   [96mconcerto@plumbus.com[0m                   [92m07196550228[0m
+[95mCop Morty[0m                  [96mcop.morty@plumbus.com[0m                  [92m07637218720[0m
+[95mCop Rick[0m                   [96mcop.rick@plumbus.com[0m                   [92m07609059927[0m
+[95mCornvelious Daniel[0m         [96mcornvelious.daniel@plumbus.com[0m         [92m07956182785[0m
+[95mCouncil of Ricks[0m           [96mcouncil.of.ricks@plumbus.com[0m           [92m07729298946[0m
+[95mCrocubot[0m                   [96mcrocubot@plumbus.com[0m                   [92m07610772322[0m
+[95mCronenberg Morty[0m           [96mcronenberg.morty@plumbus.com[0m           [92m07525716769[0m
+[95mCronenberg Rick[0m            [96mcronenberg.rick@plumbus.com[0m            [92m07835968433[0m
+[95mDavin[0m                      [96mdavin@plumbus.com[0m                      [92m07324793297[0m
+[95mDiane Sanchez[0m              [96mdiane.sanchez@plumbus.com[0m              [92m07568356309[0m
+[95mDoofus Rick[0m                [96mdoofus.rick@plumbus.com[0m                [92m07445914924[0m
+[95mElon Tusk[0m                  [96melon.tusk@plumbus.com[0m                  [92m07292350576[0m
+[95mEthan[0m                      [96methan@plumbus.com[0m                      [92m07305477073[0m
+[95mFart[0m                       [96mfart@plumbus.com[0m                       [92m07542966067[0m
+[95mFrank Palicky[0m              [96mfrank.palicky@plumbus.com[0m              [92m07869049735[0m
+[95mGaia[0m                       [96mgaia@plumbus.com[0m                       [92m07589459493[0m
+[95mGalactic Federation Agent[0m  [96mgalactic.federation.agent@plumbus.com[0m  [92m07238050079[0m
+[95mGearhead[0m                   [96mgearhead@plumbus.com[0m                   [92m07506834314[0m
+[95mGlexo Slim Slom[0m            [96mglexo.slim.slom@plumbus.com[0m            [92m07355978113[0m
+[95mGlootie[0m                    [96mglootie@plumbus.com[0m                    [92m07555297774[0m
+[95mHemorrhage[0m                 [96mhemorrhage@plumbus.com[0m                 [92m07392840065[0m
+[95mJacob[0m                      [96mjacob@plumbus.com[0m                      [92m07037865257[0m
+[95mJaguar[0m                     [96mjaguar@plumbus.com[0m                     [92m07208716771[0m
+[95mJerry Smith[0m                [96mjerry.smith@plumbus.com[0m                [92m07609608450[0m
+[95mJessica[0m                    [96mjessica@plumbus.com[0m                    [92m07617436345[0m
+[95mJesus Christ[0m               [96mjesus.christ@plumbus.com[0m               [92m07326153698[0m
+[95mJohnny Carson[0m              [96mjohnny.carson@plumbus.com[0m              [92m07920888232[0m
+[95mJoyce Smith[0m                [96mjoyce.smith@plumbus.com[0m                [92m07320835275[0m
+[95mKing Jellybean[0m             [96mking.jellybean@plumbus.com[0m             [92m07598031974[0m
+[95mKrombopulos Michael[0m        [96mkrombopulos.michael@plumbus.com[0m        [92m07032745669[0m
+[95mLeonard Smith[0m              [96mleonard.smith@plumbus.com[0m              [92m07613818605[0m
+[95mLogic[0m                      [96mlogic@plumbus.com[0m                      [92m07194261183[0m
+[95mLucy[0m                       [96mlucy@plumbus.com[0m                       [92m07144077873[0m
+[95mMC Haps[0m                    [96mmc.haps@plumbus.com[0m                    [92m07749888362[0m
+[95mMillion Ants[0m               [96mmillion.ants@plumbus.com[0m               [92m07827568826[0m
+[95mMorty Smith[0m                [96mmorty.smith@plumbus.com[0m                [92m07698312584[0m
+[95mNancy[0m                      [96mnancy@plumbus.com[0m                      [92m07305580020[0m
+[95mNathan[0m                     [96mnathan@plumbus.com[0m                     [92m07021860359[0m
+[95mNoob Noob[0m                  [96mnoob.noob@plumbus.com[0m                  [92m07774320060[0m
+[95mPaul Fleishman[0m             [96mpaul.fleishman@plumbus.com[0m             [92m07000469032[0m
+[95mPhoenixperson[0m              [96mphoenixperson@plumbus.com[0m              [92m07688045139[0m
+[95mPoncho[0m                     [96mponcho@plumbus.com[0m                     [92m07259215876[0m
+[95mPrincipal Gene Vagina[0m      [96mprincipal.gene.vagina@plumbus.com[0m      [92m07494777872[0m
+[95mReggie[0m                     [96mreggie@plumbus.com[0m                     [92m07796401862[0m
+[95mRenegade Starsoldier[0m       [96mrenegade.starsoldier@plumbus.com[0m       [92m07617698390[0m
+[95mRick Sanchez[0m               [96mrick.sanchez@plumbus.com[0m               [92m07655266089[0m
+[95mRuben[0m                      [96mruben@plumbus.com[0m                      [92m07717395659[0m
+[95mScary Terry[0m                [96mscary.terry@plumbus.com[0m                [92m07182235560[0m
+[95mShadow Council of Ricks[0m    [96mshadow.council.of.ricks@plumbus.com[0m    [92m07429624173[0m
+[95mShane[0m                      [96mshane@plumbus.com[0m                      [92m07514184929[0m
+[95mSlick Morty[0m                [96mslick.morty@plumbus.com[0m                [92m07868910876[0m
+[95mSnowball[0m                   [96msnowball@plumbus.com[0m                   [92m07139683331[0m
+[95mSpace Beth[0m                 [96mspace.beth@plumbus.com[0m                 [92m07079179829[0m
+[95mSquanchy[0m                   [96msquanchy@plumbus.com[0m                   [92m07241364626[0m
+[95mSteve[0m                      [96msteve@plumbus.com[0m                      [92m07491895427[0m
+[95mStory Lord[0m                 [96mstory.lord@plumbus.com[0m                 [92m07571901952[0m
+[95mStory Train Morty[0m          [96mstory.train.morty@plumbus.com[0m          [92m07979577542[0m
+[95mStory Train Rick[0m           [96mstory.train.rick@plumbus.com[0m           [92m07917644591[0m
+[95mSummer Smith[0m               [96msummer.smith@plumbus.com[0m               [92m07319448737[0m
+[95mSupernova[0m                  [96msupernova@plumbus.com[0m                  [92m07795890503[0m
+[95mTaddy Mason[0m                [96mtaddy.mason@plumbus.com[0m                [92m07757088844[0m
+[95mTalking Cat[0m                [96mtalking.cat@plumbus.com[0m                [92m07933441875[0m
+[95mThe Agency Director[0m        [96mthe.agency.director@plumbus.com[0m        [92m07755066680[0m
+[95mThe Death Stalkers[0m         [96mthe.death.stalkers@plumbus.com[0m         [92m07753006431[0m
+[95mThe President[0m              [96mthe.president@plumbus.com[0m              [92m07279184150[0m
+[95mToby Matthews[0m              [96mtoby.matthews@plumbus.com[0m              [92m07107135960[0m
+[95mTony[0m                       [96mtony@plumbus.com[0m                       [92m07808571809[0m
+[95mTricia Lange[0m               [96mtricia.lange@plumbus.com[0m               [92m07165245194[0m
+[95mUnity[0m                      [96munity@plumbus.com[0m                      [92m07739152037[0m
+[95mZeep Xanflorp[0m              [96mzeep.xanflorp@plumbus.com[0m              [92m07408036459[0m
