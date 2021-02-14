@@ -6,6 +6,7 @@ Executes main procedures.
 
 from cli import ContactsCLI
 from contacts import ContactData
+from conf import Config
 
 
 def main():
@@ -20,7 +21,7 @@ class DataProcessor:
 
     def __init__(self):
         self.args = ContactsCLI().args
-        self.data = ContactData('/home/sam/documents/contacts.json')
+        self.data = ContactData(Config.working_data)
         self.subcommand = self.get_subcommand_func()
         self.indices = self.get_indices()
         return

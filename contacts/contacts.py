@@ -5,8 +5,9 @@ from json.decoder import JSONDecodeError
 
 from tabulate import tabulate
 
-from colors import Colors
 from uuids import new_uuid
+from colors import Colors
+from conf import Config
 
 
 class ContactData:
@@ -105,18 +106,17 @@ class ContactData:
 
     def edit(self, indices=None, args=None):
         """Manually edit contacts with vim"""
-        contact_tmp = '/home/sam/tmp/contact_tmp'
         if len(indices) != 1:
             raise ValueError('You must edit exactly one contact at a time')
         index = indices.pop()
-        with open(contact_tmp, 'w+') as tmpfile:
+        with open(Config.edit_tmp, 'w+') as tmpfile:
             json.dump(self.contacts[index], tmpfile)
-        os.system(f'vim {contact_tmp}')
-        with open(contact_tmp, 'r') as tmpfile:
+        os.system(f'vim {Config.edit_tmp}')
+        with open(Config.edit_tmp, 'r') as tmpfile:
             edited_contact = json.load(tmpfile)
         self.contacts[index] = edited_contact
         self.overwrite()
-        os.remove(contact_tmp)
+        os.remove(Config.edit_tmp)
         return
 
     def modify(self, indices=None, args=None):

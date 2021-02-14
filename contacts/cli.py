@@ -1,6 +1,8 @@
 import argparse
 import sys
 
+from conf import Config
+
 
 class ContactsCLI():
     """Parse command line arguments for contacts program"""
@@ -131,7 +133,7 @@ class ContactsCLI():
         edit_parser = self.subparsers.add_parser('edit', help='Edit help')
         edit_parser.add_argument(
             '--editor',
-            default='/usr/bin/vim',
+            default=Config.editor,
             help='Manually select a text editor.'
         )
 
@@ -152,7 +154,7 @@ class ContactsCLI():
         )
         delete_parser.add_argument(
             '--backup',
-            default='/home/sam/documents/contacts_deleted.json',
+            default=Config.deleted_data,
             help='path to backup file where deleted contacts will be exiled'
         )
 
