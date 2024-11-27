@@ -2,25 +2,36 @@ import sys
 import os
 import json
 from json.decoder import JSONDecodeError
+from shutil import get_terminal_size
+from uuid import uuid1
 
 from tabulate import tabulate
 
-from uuids import new_uuid
-from colors import Colors
-from conf import Config
+from .conf import Config
+
+# Color and formatting definitions for pretty printing
+colors = {
+    'no_color': '\033[0m',
+    'name': '\033[95m',
+    'email': '\033[96m',
+    'phone': '\033[92m'
+}
 
 
-class ContactData:
-    """Data holder for contact information"""
+def new_uuid():
+    return str(uuid1())
+
+
+class ContactManager:
+    """Stores and manipulates contact information"""
 
     def __init__(self, json_path):
-        """Construct ContactData instance"""
         self.json_path = json_path
         self.contacts = self.read_json()
 
     def __repr__(self):
         """Return simple string to represent ContactData instance"""
-        return f'ContactData({self.json_path})'
+        return f'ContactManager({self.json_path})'
 
     def read_json(self):
         """Read existing contact list from json file.
@@ -63,11 +74,11 @@ class ContactData:
         return matching_indices
 
     def list_matches(self, indices):
-        matches = [self.contacts[i] for i in indices]
-        return matches
+        return [self.contacts[i] for i in indices]
 
     def show(self, indices=None, args=None):
         """Write pretty matches to stdout"""
+        term_size = get_terminal_size()
         matches = self.list_matches(indices)
         pretty_matches = []
         for match in matches:
@@ -76,25 +87,35 @@ class ContactData:
                 if k == 'tags' or k == 'uuid':  # Don't show tags or uuid
                     continue
                 elif k == 'name':
-                    color = Colors.NAME
-                    pretty_v = f'{color}{v}{Colors.ENDC}'
+                    color = colors["name"]
+                    pretty_v = f'{color}{v}{colors["no_color"]}'
                 elif k == 'email':
-                    color = Colors.EMAIL
+                    color = colors["email"]
                 elif k == 'phone':
-                    color = Colors.PHONE
+                    color = colors["phone"]
                 if v is None:
-                    pretty_v = f'{color}...{Colors.ENDC}'
+                    pretty_v = f'{color}...{colors["no_color"]}'
                 if isinstance(v, list):
                     ellipsis = ''
                     if len(v) > 1:
                         ellipsis = ' + ... '
-                    pretty_v = f'{color}{v[0]}{ellipsis}{Colors.ENDC}'
+                    pretty_v = f'{color}{v[0]}{ellipsis}{colors["no_color"]}'
                 v = pretty_v
                 pretty_dict.update({k: v})
             pretty_matches.append(pretty_dict)
-        sys.stdout.write(tabulate(pretty_matches, headers='keys'))
-        sys.stdout.write('\n')
-        return
+        if len(pretty_matches) >= term_size.lines:
+            clip_at = term_size.lines - 5
+            truncated_matches = pretty_matches[:clip_at]
+            sys.stdout.write(tabulate(truncated_matches, headers='keys'))
+            sys.stdout.write('\n' * 2)
+            sys.stdout.write(
+                f'{len(pretty_matches)} contacts, truncated to '
+                f'{len(truncated_matches)} lines'
+            )
+            sys.stdout.write('\n')
+        else:
+            sys.stdout.write(tabulate(pretty_matches, headers='keys'))
+            sys.stdout.write('\n')
 
     def export(self, indices=None, args=None):
         """Export matching contacts as json"""
@@ -102,7 +123,6 @@ class ContactData:
         for match in self.list_matches(indices):
             output.append(match)
         sys.stdout.write(json.dumps(output))
-        return
 
     def edit(self, indices=None, args=None):
         """Manually edit contacts with vim"""
@@ -117,7 +137,6 @@ class ContactData:
         self.contacts[index] = edited_contact
         self.overwrite()
         os.remove(Config.edit_tmp)
-        return
 
     def modify(self, indices=None, args=None):
         """Modify filtered contacts directly from the command line"""
@@ -137,7 +156,6 @@ class ContactData:
             self.contacts[index] = modified_contact
         sys.stderr.close()
         self.overwrite()
-        return
 
     def add(self, indices=None, args=None):
         """Add a contact"""
@@ -150,7 +168,6 @@ class ContactData:
         sys.stderr.write(f'adding contact info ... {new_contact}')
         self.contacts.append(new_contact)
         self.overwrite()
-        return
 
     def import_json(self, args=None):
         """Write a function to import contacts"""
@@ -172,7 +189,6 @@ class ContactData:
                     f'Try one of [name, uuid, email, phone, tags]'
                 ):
                     sys.exit(1)
-        return
 
     def delete(self, indices=None, args=None):
         """Delete filtered contacts from main data file and store in a
@@ -195,4 +211,3 @@ class ContactData:
             self.overwrite()
         else:
             sys.stderr.write('Exiting without deletion')
-        return

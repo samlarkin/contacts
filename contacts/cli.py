@@ -1,20 +1,20 @@
 import argparse
 import sys
 
-from conf import Config
+from .conf import Config
 
 
-class ContactsCLI():
-    """Parse command line arguments for contacts program"""
-
+class CLI():
+    """Parses command line arguments for contacts program"""
     def __init__(self):
         self.parser = argparse.ArgumentParser()
         self.parser.add_argument(
-            '-f',
-            '--filter',
+            '-q',
+            '--query',
             default=None,
             type=str,
-            help='Filter contacts list by checking for matches to this string.'
+            help='Query contacts list by checking for matches to this string' \
+                 '(in any field.'
         )
         self.subparsers = self.parser.add_subparsers(dest='subcommand')
         self.gen_show_parser()
@@ -157,7 +157,3 @@ class ContactsCLI():
             default=Config.deleted_data,
             help='path to backup file where deleted contacts will be exiled'
         )
-
-
-if __name__ == '__main__':
-    ContactsCLI()

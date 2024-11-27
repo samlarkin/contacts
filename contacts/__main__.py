@@ -1,35 +1,26 @@
 #!/usr/bin/env python3
-"""Main module for contacts package.
+"""Main module for contacts package"""
 
-Executes main procedures.
-"""
-
-from cli import ContactsCLI
-from contacts import ContactData
-from conf import Config
+from .cli import CLI
+from .contacts import ContactManager
+from .conf import Config
 
 
-def main():
-    """Follow this main procedure when application is called"""
-    processor = DataProcessor()
-    processor.subcommand(indices=processor.indices, args=processor.args)
-    return
-
-
-class DataProcessor:
-    """Process data using CLI arguments to determine required methods"""
+class ContactProcessor:
+    """Process contact data using CLI arguments to determine required
+    operations.
+    """
 
     def __init__(self):
-        self.args = ContactsCLI().args
-        self.data = ContactData(Config.working_data)
+        self.args = CLI().args
+        self.data = ContactManager(Config.working_data)
         self.subcommand = self.get_subcommand_func()
         self.indices = self.get_indices()
-        return
 
     def get_indices(self):
-        """Get indices of contacts which match the filter string"""
-        if self.args.filter is not None:
-            indices = self.data.query(self.args.filter)
+        """Get indices of contacts which match the query string"""
+        if self.args.query is not None:
+            indices = self.data.query(self.args.query)
         else:
             indices = range(len(self.data.contacts))
         return indices
@@ -41,6 +32,12 @@ class DataProcessor:
         else:
             subcommand = getattr(self.data, 'show')
         return subcommand
+
+
+def main():
+    """Follow this main procedure when application is called"""
+    processor = ContactProcessor()
+    processor.subcommand(indices=processor.indices, args=processor.args)
 
 
 if __name__ == '__main__':
