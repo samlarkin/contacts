@@ -1,16 +1,25 @@
-"""Configuration file for customising data storage defaults."""
+"""Configuration"""
 
-import os
+from os import environ
 from pathlib import Path
+from json import load
 
-default_path = Path(os.environ['XDG_CONFIG_HOME'], 'contacts')
+contacts_path = Path(environ['XDG_CONFIG_HOME'], 'contacts')
 
+default_config = {
+    'path': contacts_path,
+    'working_data': contacts_path/'contacts.json',
+    'backup_data': contacts_path/'contacts.json.bak',
+    'deleted_data': contacts_path/'contacts_deleted.json',
+    'backup_deleted_data': contacts_path/'contacts_deleted.json.bak',
+    'tmp_edit_path': contacts_path/'contacts_tmp',
+    'editor': Path(environ['EDITOR'])
+}
 
-class Config:
-    path = default_path
-    working_data = Path(path, 'contacts.json')
-    backup_data = Path(path, 'contacts.json.bak')
-    deleted_data = Path(path, 'contacts_deleted.json')
-    del_bak_data = Path(path, 'contacts_deleted.json.bak')
-    edit_tmp = Path(path, 'edit_tmp')
-    editor = Path('/usr/bin/vim')
+config_file = contacts_path/'config.json'
+
+if config_file.exists():
+    with open(config_file, 'r') as cf:
+        config = load(cf)
+else:
+    config = default_config

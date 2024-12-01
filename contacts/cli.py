@@ -1,20 +1,25 @@
 import argparse
 import sys
 
-from .conf import Config
+from .conf import config
 
 
 class CLI():
-    """Parses command line arguments for contacts program"""
+    """Class to parse command line arguments for contacts program"""
+
     def __init__(self):
-        self.parser = argparse.ArgumentParser()
+        self.parser = argparse.ArgumentParser(
+            prog='contacts',
+            description='A CLI contact manager application',
+            epilog=''
+        )
         self.parser.add_argument(
             '-q',
-            '--query',
+            '--query_str',
             default=None,
             type=str,
             help='Query contacts list by checking for matches to this string' \
-                 '(in any field.'
+                 '(in any field).'
         )
         self.subparsers = self.parser.add_subparsers(dest='subcommand')
         self.gen_show_parser()
@@ -33,7 +38,10 @@ class CLI():
             sys.exit(1)
 
     def gen_show_parser(self):
-        show_parser = self.subparsers.add_parser('show', help='Show help')
+        show_parser = self.subparsers.add_parser(
+            'show',
+            help='Show a human-readable table of contacts'
+        )
         show_parser.add_argument(
             '-c',
             '--color',
@@ -45,7 +53,7 @@ class CLI():
     def gen_export_parser(self):
         export_parser = self.subparsers.add_parser(
             'export',
-            help='Export help',
+            help='Export contact data as json, either to a file or to stdout'
         )
         export_parser.add_argument(
             '-o',
@@ -58,7 +66,7 @@ class CLI():
     def gen_modify_parser(self):
         modify_parser = self.subparsers.add_parser(
             'modify',
-            help='Modify help',
+            help='Modify a contact in the contacts list',
         )
         modify_parser.add_argument(
             '-n',
@@ -89,7 +97,10 @@ class CLI():
         )
 
     def gen_add_parser(self):
-        add_parser = self.subparsers.add_parser('add', help='Add help')
+        add_parser = self.subparsers.add_parser(
+            'add',
+            help='Add a new contact'
+        )
         add_parser.add_argument(
             '-n',
             '--name',
@@ -121,7 +132,7 @@ class CLI():
     def gen_import_parser(self):
         import_parser = self.subparsers.add_parser(
             'import',
-            help='Import help'
+            help='Import contacts data'
         )
         import_parser.add_argument(
             'input_file',
@@ -130,17 +141,19 @@ class CLI():
         )
 
     def gen_edit_parser(self):
-        edit_parser = self.subparsers.add_parser('edit', help='Edit help')
+        edit_parser = self.subparsers.add_parser(
+            'edit',
+            help='Edit a contact by directly manipulating its json string')
         edit_parser.add_argument(
             '--editor',
-            default=Config.editor,
-            help='Manually select a text editor.'
+            default=config['editor'],
+            help='Select a text editor (defaults to EDITOR from environment).'
         )
 
     def gen_get_field_parser(self):
         get_field_parser = self.subparsers.add_parser(
             'get_field',
-            help='get field help'
+            help='Get data from a single field only e.g., email'
         )
         get_field_parser.add_argument(
             'fieldname',
@@ -150,10 +163,10 @@ class CLI():
     def gen_delete_parser(self):
         delete_parser = self.subparsers.add_parser(
             'delete',
-            help='delete'
+            help='Delete contacts'
         )
         delete_parser.add_argument(
             '--backup',
-            default=Config.deleted_data,
+            default=config['deleted_data'],
             help='path to backup file where deleted contacts will be exiled'
         )
